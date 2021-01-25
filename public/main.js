@@ -2,10 +2,12 @@ let n=1
 getPage.onclick=()=>{
     const request=new XMLHttpRequest()
     request.open("GET",`/page${n+1}`)
+    
     request.onreadystatechange=()=>{
         if(request.readyState===4){
             
             if(request.status>=200&&request.status<300){
+               console.log(request.reponse)
                 const array=JSON.parse(request.reponse)
                 array.forEach(item => {
                     const li=document.createElement("li")
@@ -14,9 +16,9 @@ getPage.onclick=()=>{
                 });
                 n+=1
             }
-        }
-        request.send()
+        }   
     }
+    request.send()
 }
 getJSON.onclick=()=>{
    
