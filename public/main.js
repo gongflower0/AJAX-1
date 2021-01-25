@@ -1,3 +1,23 @@
+let n=1
+getPage.onclick=()=>{
+    const request=new XMLHttpRequest()
+    request.open("GET",`/page${n+1}`)
+    request.onreadystatechange=()=>{
+        if(request.readyState===4){
+            
+            if(request.status>=200&&request.status<300){
+                const array=JSON.parse(request.reponse)
+                array.forEach(item => {
+                    const li=document.createElement("li")
+                 li.textContent=item.id
+                 xxx.appendChild(li)
+                });
+                n+=1
+            }
+        }
+        request.send()
+    }
+}
 getJSON.onclick=()=>{
    
     const request=new XMLHttpRequest();
@@ -7,7 +27,9 @@ getJSON.onclick=()=>{
             
             if(request.status>=200&&request.status<300){
                 
-            console.log(request.response)
+            const object=JSON.parse(request.response)
+            //可以把符合json的字符串变成js的对象，或其他类型
+            myName.textContent=object.name
             }
         }
     };
