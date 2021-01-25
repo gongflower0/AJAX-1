@@ -7,8 +7,8 @@ getPage.onclick=()=>{
         if(request.readyState===4){
             
             if(request.status>=200&&request.status<300){
-               console.log(request.reponse)
-                const array=JSON.parse(request.reponse)
+               console.log(request.response)
+                const array=JSON.parse(request.response)
                 array.forEach(item => {
                     const li=document.createElement("li")
                  li.textContent=item.id
